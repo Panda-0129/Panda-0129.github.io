@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>LeetCode 刷题 - bobo&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="bobo&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="bobo&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="在JackZhao98项目基础上实现的自动获取LeetCode提交  retriever.py: 获取所有已通过的提交，存入TODO文件夹中 generate_readme.py: 能够自动生成readme.md"><meta property="og:type" content="blog"><meta property="og:title" content="LeetCode 刷题"><meta property="og:url" content="https://panda-0129.github.io/de20ad77/"><meta property="og:site_name" content="bobo&#039;s blog"><meta property="og:description" content="在JackZhao98项目基础上实现的自动获取LeetCode提交  retriever.py: 获取所有已通过的提交，存入TODO文件夹中 generate_readme.py: 能够自动生成readme.md"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://panda-0129.github.io/img/og_image.png"><meta property="article:published_time" content="2021-01-15T07:59:30.000Z"><meta property="article:modified_time" content="2021-01-15T07:59:30.000Z"><meta property="article:author" content="金波"><meta property="article:tag" content="LeetCode"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://panda-0129.github.io/de20ad77/"},"headline":"bobo's blog","image":["https://panda-0129.github.io/img/og_image.png"],"datePublished":"2021-01-15T07:59:30.000Z","dateModified":"2021-01-15T07:59:30.000Z","author":{"@type":"Person","name":"金波"},"description":"在JackZhao98项目基础上实现的自动获取LeetCode提交  retriever.py: 获取所有已通过的提交，存入TODO文件夹中 generate_readme.py: 能够自动生成readme.md"}</script><link rel="canonical" href="https://panda-0129.github.io/de20ad77/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="bobo's blog" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/panda.svg" alt="bobo&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Panda-0129"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-01-15T07:59:30.000Z" title="2021-01-15T07:59:30.000Z">2021-01-15</time>发表</span><span class="level-item"><time dateTime="2021-01-15T07:59:30.000Z" title="2021-01-15T07:59:30.000Z">2021-01-15</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></span><span class="level-item">20 分钟读完 (大约3019个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">LeetCode 刷题</h1><div class="content"><p>在JackZhao98<a target="_blank" rel="noopener" href="https://github.com/JackZhao98/LeetCode-DataRetriever">项目</a>基础上实现的自动获取LeetCode提交</p>
+<ul>
+<li><strong>retriever.py</strong>: 获取所有已通过的提交，存入TODO文件夹中</li>
+<li><strong>generate_readme.py</strong>: 能够自动生成readme.md</li>
+</ul>
+<hr>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th>Difficulty</th>
+<th>runtime</th>
+<th>memory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1]%20Two%20Sum.md">Two Sum</a></td>
+<td>Easy</td>
+<td>4756 ms</td>
+<td>13.7 MB</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[2]%20Add%20Two%20Numbers.md">Add Two Numbers</a></td>
+<td>Medium</td>
+<td>80 ms</td>
+<td>14.1 MB</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[3]%20Longest%20Substring%20Without%20Repeating%20Characters.md">Longest Substring Without Repeating Characters</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>12.1 MB</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[4]%20Median%20of%20Two%20Sorted%20Arrays.md">Median of Two Sorted Arrays</a></td>
+<td>Hard</td>
+<td>156 ms</td>
+<td>14.6 MB</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[5]%20Longest%20Palindromic%20Substring.md">Longest Palindromic Substring</a></td>
+<td>Medium</td>
+<td>1036 ms</td>
+<td>13.7 MB</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[10]%20Regular%20Expression%20Matching.md">Regular Expression Matching</a></td>
+<td>Hard</td>
+<td>48 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[11]%20Container%20With%20Most%20Water.md">Container With Most Water</a></td>
+<td>Medium</td>
+<td>128 ms</td>
+<td>14.4 MB</td>
+</tr>
+<tr>
+<td>14</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[14]%20Longest%20Common%20Prefix.md">Longest Common Prefix</a></td>
+<td>Easy</td>
+<td>32 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>15</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[15]%203Sum.md">3Sum</a></td>
+<td>Medium</td>
+<td>1300 ms</td>
+<td>17.5 MB</td>
+</tr>
+<tr>
+<td>17</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[17]%20Letter%20Combinations%20of%20a%20Phone%20Number.md">Letter Combinations of a Phone Number</a></td>
+<td>Medium</td>
+<td>24 ms</td>
+<td>12.7 MB</td>
+</tr>
+<tr>
+<td>18</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[18]%204Sum.md">4Sum</a></td>
+<td>Medium</td>
+<td>1496 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>19</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[19]%20Remove%20Nth%20Node%20From%20End%20of%20List.md">Remove Nth Node From End of List</a></td>
+<td>Medium</td>
+<td>32 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>32</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[32]%20Longest%20Valid%20Parentheses.md">Longest Valid Parentheses</a></td>
+<td>Hard</td>
+<td>36 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>34</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[34]%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.md">Find First and Last Position of Element in Sorted Array</a></td>
+<td>Medium</td>
+<td>104 ms</td>
+<td>15.1 MB</td>
+</tr>
+<tr>
+<td>36</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[36]%20Valid%20Sudoku.md">Valid Sudoku</a></td>
+<td>Medium</td>
+<td>108 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>39</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[39]%20Combination%20Sum.md">Combination Sum</a></td>
+<td>Medium</td>
+<td>52 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>40</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[40]%20Combination%20Sum%20II.md">Combination Sum II</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>44</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[44]%20Wildcard%20Matching.md">Wildcard Matching</a></td>
+<td>Hard</td>
+<td>812 ms</td>
+<td>22.7 MB</td>
+</tr>
+<tr>
+<td>46</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[46]%20Permutations.md">Permutations</a></td>
+<td>Medium</td>
+<td>48 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>47</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[47]%20Permutations%20II.md">Permutations II</a></td>
+<td>Medium</td>
+<td>48 ms</td>
+<td>14.4 MB</td>
+</tr>
+<tr>
+<td>51</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[51]%20N-Queens.md">N-Queens</a></td>
+<td>Hard</td>
+<td>160 ms</td>
+<td>14.5 MB</td>
+</tr>
+<tr>
+<td>52</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[52]%20N-Queens%20II.md">N-Queens II</a></td>
+<td>Hard</td>
+<td>152 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>53</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[53]%20Maximum%20Subarray.md">Maximum Subarray</a></td>
+<td>Easy</td>
+<td>96 ms</td>
+<td>12.4 MB</td>
+</tr>
+<tr>
+<td>62</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[62]%20Unique%20Paths.md">Unique Paths</a></td>
+<td>Medium</td>
+<td>44 ms</td>
+<td>13.7 MB</td>
+</tr>
+<tr>
+<td>63</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[63]%20Unique%20Paths%20II.md">Unique Paths II</a></td>
+<td>Medium</td>
+<td>56 ms</td>
+<td>13.8 MB</td>
+</tr>
+<tr>
+<td>64</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[64]%20Minimum%20Path%20Sum.md">Minimum Path Sum</a></td>
+<td>Medium</td>
+<td>184 ms</td>
+<td>13.3 MB</td>
+</tr>
+<tr>
+<td>69</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[69]%20Sqrt(x).md">Sqrt(x)</a></td>
+<td>Easy</td>
+<td>44 ms</td>
+<td>11.8 MB</td>
+</tr>
+<tr>
+<td>70</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[70]%20Climbing%20Stairs.md">Climbing Stairs</a></td>
+<td>Easy</td>
+<td>20 ms</td>
+<td>11.9 MB</td>
+</tr>
+<tr>
+<td>75</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[75]%20Sort%20Colors.md">Sort Colors</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>12 MB</td>
+</tr>
+<tr>
+<td>76</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[76]%20Minimum%20Window%20Substring.md">Minimum Window Substring</a></td>
+<td>Hard</td>
+<td>104 ms</td>
+<td>14.6 MB</td>
+</tr>
+<tr>
+<td>77</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[77]%20Combinations.md">Combinations</a></td>
+<td>Medium</td>
+<td>460 ms</td>
+<td>15.7 MB</td>
+</tr>
+<tr>
+<td>78</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[78]%20Subsets.md">Subsets</a></td>
+<td>Medium</td>
+<td>36 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>79</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[79]%20Word%20Search.md">Word Search</a></td>
+<td>Medium</td>
+<td>288 ms</td>
+<td>15.4 MB</td>
+</tr>
+<tr>
+<td>88</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[88]%20Merge%20Sorted%20Array.md">Merge Sorted Array</a></td>
+<td>Easy</td>
+<td>40 ms</td>
+<td>13.1 MB</td>
+</tr>
+<tr>
+<td>90</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[90]%20Subsets%20II.md">Subsets II</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>14.3 MB</td>
+</tr>
+<tr>
+<td>93</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[93]%20Restore%20IP%20Addresses.md">Restore IP Addresses</a></td>
+<td>Medium</td>
+<td>332 ms</td>
+<td>14.1 MB</td>
+</tr>
+<tr>
+<td>94</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[94]%20Binary%20Tree%20Inorder%20Traversal.md">Binary Tree Inorder Traversal</a></td>
+<td>Medium</td>
+<td>32 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>97</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[97]%20Interleaving%20String.md">Interleaving String</a></td>
+<td>Hard</td>
+<td>40 ms</td>
+<td>14.3 MB</td>
+</tr>
+<tr>
+<td>106</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[106]%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.md">Construct Binary Tree from Inorder and Postorder Traversal</a></td>
+<td>Medium</td>
+<td>364 ms</td>
+<td>18.8 MB</td>
+</tr>
+<tr>
+<td>111</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[111]%20Minimum%20Depth%20of%20Binary%20Tree.md">Minimum Depth of Binary Tree</a></td>
+<td>Easy</td>
+<td>92 ms</td>
+<td>15 MB</td>
+</tr>
+<tr>
+<td>115</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[115]%20Distinct%20Subsequences.md">Distinct Subsequences</a></td>
+<td>Hard</td>
+<td>44 ms</td>
+<td>14.3 MB</td>
+</tr>
+<tr>
+<td>120</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[120]%20Triangle.md">Triangle</a></td>
+<td>Medium</td>
+<td>44 ms</td>
+<td>12.9 MB</td>
+</tr>
+<tr>
+<td>121</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[121]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.md">Best Time to Buy and Sell Stock</a></td>
+<td>Easy</td>
+<td>92 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>122</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[122]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.md">Best Time to Buy and Sell Stock II</a></td>
+<td>Easy</td>
+<td>92 ms</td>
+<td>12.7 MB</td>
+</tr>
+<tr>
+<td>123</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[123]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.md">Best Time to Buy and Sell Stock III</a></td>
+<td>Hard</td>
+<td>3440 ms</td>
+<td>64.3 MB</td>
+</tr>
+<tr>
+<td>127</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[127]%20Word%20Ladder.md">Word Ladder</a></td>
+<td>Hard</td>
+<td>536 ms</td>
+<td>14.8 MB</td>
+</tr>
+<tr>
+<td>131</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[131]%20Palindrome%20Partitioning.md">Palindrome Partitioning</a></td>
+<td>Medium</td>
+<td>72 ms</td>
+<td>14.5 MB</td>
+</tr>
+<tr>
+<td>139</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[139]%20Word%20Break.md">Word Break</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>140</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[140]%20Word%20Break%20II.md">Word Break II</a></td>
+<td>Hard</td>
+<td>120 ms</td>
+<td>12.6 MB</td>
+</tr>
+<tr>
+<td>141</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[141]%20Linked%20List%20Cycle.md">Linked List Cycle</a></td>
+<td>Easy</td>
+<td>64 ms</td>
+<td>18.4 MB</td>
+</tr>
+<tr>
+<td>144</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[144]%20Binary%20Tree%20Preorder%20Traversal.md">Binary Tree Preorder Traversal</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>152</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[152]%20Maximum%20Product%20Subarray.md">Maximum Product Subarray</a></td>
+<td>Medium</td>
+<td>56 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>153</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[153]%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.md">Find Minimum in Rotated Sorted Array</a></td>
+<td>Medium</td>
+<td>44 ms</td>
+<td>11.9 MB</td>
+</tr>
+<tr>
+<td>167</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[167]%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted.md">Two Sum II - Input array is sorted</a></td>
+<td>Easy</td>
+<td>40 ms</td>
+<td>13.6 MB</td>
+</tr>
+<tr>
+<td>174</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[174]%20Dungeon%20Game.md">Dungeon Game</a></td>
+<td>Hard</td>
+<td>72 ms</td>
+<td>15 MB</td>
+</tr>
+<tr>
+<td>179</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[179]%20Largest%20Number.md">Largest Number</a></td>
+<td>Medium</td>
+<td>44 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>188</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[188]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.md">Best Time to Buy and Sell Stock IV</a></td>
+<td>Hard</td>
+<td>220 ms</td>
+<td>25.3 MB</td>
+</tr>
+<tr>
+<td>198</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[198]%20House%20Robber.md">House Robber</a></td>
+<td>Medium</td>
+<td>24 ms</td>
+<td>12 MB</td>
+</tr>
+<tr>
+<td>205</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[205]%20Isomorphic%20Strings.md">Isomorphic Strings</a></td>
+<td>Easy</td>
+<td>44 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>208</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[208]%20Implement%20Trie%20(Prefix%20Tree).md">Implement Trie (Prefix Tree)</a></td>
+<td>Medium</td>
+<td>168 ms</td>
+<td>31.3 MB</td>
+</tr>
+<tr>
+<td>212</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[212]%20Word%20Search%20II.md">Word Search II</a></td>
+<td>Hard</td>
+<td>380 ms</td>
+<td>32.4 MB</td>
+</tr>
+<tr>
+<td>213</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[213]%20House%20Robber%20II.md">House Robber II</a></td>
+<td>Medium</td>
+<td>24 ms</td>
+<td>11.7 MB</td>
+</tr>
+<tr>
+<td>215</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[215]%20Kth%20Largest%20Element%20in%20an%20Array.md">Kth Largest Element in an Array</a></td>
+<td>Medium</td>
+<td>116 ms</td>
+<td>12.3 MB</td>
+</tr>
+<tr>
+<td>216</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[216]%20Combination%20Sum%20III.md">Combination Sum III</a></td>
+<td>Medium</td>
+<td>32 ms</td>
+<td>14.1 MB</td>
+</tr>
+<tr>
+<td>221</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[221]%20Maximal%20Square.md">Maximal Square</a></td>
+<td>Medium</td>
+<td>212 ms</td>
+<td>13.8 MB</td>
+</tr>
+<tr>
+<td>234</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[234]%20Palindrome%20Linked%20List.md">Palindrome Linked List</a></td>
+<td>Easy</td>
+<td>64 ms</td>
+<td>31.3 MB</td>
+</tr>
+<tr>
+<td>241</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[241]%20Different%20Ways%20to%20Add%20Parentheses.md">Different Ways to Add Parentheses</a></td>
+<td>Medium</td>
+<td>56 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>242</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[242]%20Valid%20Anagram.md">Valid Anagram</a></td>
+<td>Easy</td>
+<td>40 ms</td>
+<td>12.5 MB</td>
+</tr>
+<tr>
+<td>264</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[264]%20Ugly%20Number%20II.md">Ugly Number II</a></td>
+<td>Medium</td>
+<td>152 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>278</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[278]%20First%20Bad%20Version.md">First Bad Version</a></td>
+<td>Easy</td>
+<td>20 ms</td>
+<td>11.7 MB</td>
+</tr>
+<tr>
+<td>279</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[279]%20Perfect%20Squares.md">Perfect Squares</a></td>
+<td>Medium</td>
+<td>6780 ms</td>
+<td>12.7 MB</td>
+</tr>
+<tr>
+<td>282</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[282]%20Expression%20Add%20Operators.md">Expression Add Operators</a></td>
+<td>Hard</td>
+<td>1012 ms</td>
+<td>14.6 MB</td>
+</tr>
+<tr>
+<td>300</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[300]%20Longest%20Increasing%20Subsequence.md">Longest Increasing Subsequence</a></td>
+<td>Medium</td>
+<td>1204 ms</td>
+<td>12.7 MB</td>
+</tr>
+<tr>
+<td>309</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[309]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown.md">Best Time to Buy and Sell Stock with Cooldown</a></td>
+<td>Medium</td>
+<td>36 ms</td>
+<td>12.9 MB</td>
+</tr>
+<tr>
+<td>312</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[312]%20Burst%20Balloons.md">Burst Balloons</a></td>
+<td>Hard</td>
+<td>336 ms</td>
+<td>14.7 MB</td>
+</tr>
+<tr>
+<td>322</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[322]%20Coin%20Change.md">Coin Change</a></td>
+<td>Medium</td>
+<td>1120 ms</td>
+<td>12.1 MB</td>
+</tr>
+<tr>
+<td>337</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[337]%20House%20Robber%20III.md">House Robber III</a></td>
+<td>Medium</td>
+<td>56 ms</td>
+<td>15.9 MB</td>
+</tr>
+<tr>
+<td>343</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[343]%20Integer%20Break.md">Integer Break</a></td>
+<td>Medium</td>
+<td>32 ms</td>
+<td>12.6 MB</td>
+</tr>
+<tr>
+<td>345</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[345]%20Reverse%20Vowels%20of%20a%20String.md">Reverse Vowels of a String</a></td>
+<td>Easy</td>
+<td>76 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>347</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[347]%20Top%20K%20Frequent%20Elements.md">Top K Frequent Elements</a></td>
+<td>Medium</td>
+<td>284 ms</td>
+<td>15.2 MB</td>
+</tr>
+<tr>
+<td>350</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[350]%20Intersection%20of%20Two%20Arrays%20II.md">Intersection of Two Arrays II</a></td>
+<td>Easy</td>
+<td>32 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>367</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[367]%20Valid%20Perfect%20Square.md">Valid Perfect Square</a></td>
+<td>Easy</td>
+<td>28 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>368</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[368]%20Largest%20Divisible%20Subset.md">Largest Divisible Subset</a></td>
+<td>Medium</td>
+<td>432 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>376</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[376]%20Wiggle%20Subsequence.md">Wiggle Subsequence</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>13.8 MB</td>
+</tr>
+<tr>
+<td>377</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[377]%20Combination%20Sum%20IV.md">Combination Sum IV</a></td>
+<td>Medium</td>
+<td>48 ms</td>
+<td>12.9 MB</td>
+</tr>
+<tr>
+<td>387</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[387]%20First%20Unique%20Character%20in%20a%20String.md">First Unique Character in a String</a></td>
+<td>Easy</td>
+<td>40 ms</td>
+<td>12 MB</td>
+</tr>
+<tr>
+<td>392</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[392]%20Is%20Subsequence.md">Is Subsequence</a></td>
+<td>Easy</td>
+<td>252 ms</td>
+<td>17.4 MB</td>
+</tr>
+<tr>
+<td>395</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[395]%20Longest%20Substring%20with%20At%20Least%20K%20Repeating%20Characters.md">Longest Substring with At Least K Repeating Characters</a></td>
+<td>Medium</td>
+<td>28 ms</td>
+<td>12.3 MB</td>
+</tr>
+<tr>
+<td>406</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[406]%20Queue%20Reconstruction%20by%20Height.md">Queue Reconstruction by Height</a></td>
+<td>Medium</td>
+<td>180 ms</td>
+<td>12.2 MB</td>
+</tr>
+<tr>
+<td>412</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[412]%20Fizz%20Buzz.md">Fizz Buzz</a></td>
+<td>Easy</td>
+<td>40 ms</td>
+<td>12.6 MB</td>
+</tr>
+<tr>
+<td>416</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[416]%20Partition%20Equal%20Subset%20Sum.md">Partition Equal Subset Sum</a></td>
+<td>Medium</td>
+<td>744 ms</td>
+<td>12.7 MB</td>
+</tr>
+<tr>
+<td>435</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[435]%20Non-overlapping%20Intervals.md">Non-overlapping Intervals</a></td>
+<td>Medium</td>
+<td>72 ms</td>
+<td>17.6 MB</td>
+</tr>
+<tr>
+<td>438</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[438]%20Find%20All%20Anagrams%20in%20a%20String.md">Find All Anagrams in a String</a></td>
+<td>Medium</td>
+<td>120 ms</td>
+<td>14.8 MB</td>
+</tr>
+<tr>
+<td>445</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[445]%20Add%20Two%20Numbers%20II.md">Add Two Numbers II</a></td>
+<td>Medium</td>
+<td>84 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>448</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[448]%20Find%20All%20Numbers%20Disappeared%20in%20an%20Array.md">Find All Numbers Disappeared in an Array</a></td>
+<td>Easy</td>
+<td>13043 ms</td>
+<td>44 MB</td>
+</tr>
+<tr>
+<td>451</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[451]%20Sort%20Characters%20By%20Frequency.md">Sort Characters By Frequency</a></td>
+<td>Medium</td>
+<td>68 ms</td>
+<td>15.8 MB</td>
+</tr>
+<tr>
+<td>452</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[452]%20Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons.md">Minimum Number of Arrows to Burst Balloons</a></td>
+<td>Medium</td>
+<td>1064 ms</td>
+<td>17.5 MB</td>
+</tr>
+<tr>
+<td>454</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[454]%204Sum%20II.md">4Sum II</a></td>
+<td>Medium</td>
+<td>296 ms</td>
+<td>34.2 MB</td>
+</tr>
+<tr>
+<td>455</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[455]%20Assign%20Cookies.md">Assign Cookies</a></td>
+<td>Easy</td>
+<td>336 ms</td>
+<td>13.4 MB</td>
+</tr>
+<tr>
+<td>461</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[461]%20Hamming%20Distance.md">Hamming Distance</a></td>
+<td>Easy</td>
+<td>8 ms</td>
+<td>25.9 MB</td>
+</tr>
+<tr>
+<td>494</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[494]%20Target%20Sum.md">Target Sum</a></td>
+<td>Medium</td>
+<td>928 ms</td>
+<td>14.3 MB</td>
+</tr>
+<tr>
+<td>513</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[513]%20Find%20Bottom%20Left%20Tree%20Value.md">Find Bottom Left Tree Value</a></td>
+<td>Medium</td>
+<td>44 ms</td>
+<td>17.2 MB</td>
+</tr>
+<tr>
+<td>518</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[518]%20Coin%20Change%202.md">Coin Change 2</a></td>
+<td>Medium</td>
+<td>272 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>524</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[524]%20Longest%20Word%20in%20Dictionary%20through%20Deleting.md">Longest Word in Dictionary through Deleting</a></td>
+<td>Medium</td>
+<td>732 ms</td>
+<td>16.9 MB</td>
+</tr>
+<tr>
+<td>525</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[525]%20Contiguous%20Array.md">Contiguous Array</a></td>
+<td>Medium</td>
+<td>808 ms</td>
+<td>16.8 MB</td>
+</tr>
+<tr>
+<td>540</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[540]%20Single%20Element%20in%20a%20Sorted%20Array.md">Single Element in a Sorted Array</a></td>
+<td>Medium</td>
+<td>72 ms</td>
+<td>12.8 MB</td>
+</tr>
+<tr>
+<td>543</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[543]%20Diameter%20of%20Binary%20Tree.md">Diameter of Binary Tree</a></td>
+<td>Easy</td>
+<td>4 ms</td>
+<td>29.2 MB</td>
+</tr>
+<tr>
+<td>565</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[565]%20Array%20Nesting.md">Array Nesting</a></td>
+<td>Medium</td>
+<td>144 ms</td>
+<td>15.8 MB</td>
+</tr>
+<tr>
+<td>567</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[567]%20Permutation%20in%20String.md">Permutation in String</a></td>
+<td>Medium</td>
+<td>76 ms</td>
+<td>13.7 MB</td>
+</tr>
+<tr>
+<td>581</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[581]%20Shortest%20Unsorted%20Continuous%20Subarray.md">Shortest Unsorted Continuous Subarray</a></td>
+<td>Medium</td>
+<td>22 ms</td>
+<td>29.3 MB</td>
+</tr>
+<tr>
+<td>583</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[583]%20Delete%20Operation%20for%20Two%20Strings.md">Delete Operation for Two Strings</a></td>
+<td>Medium</td>
+<td>344 ms</td>
+<td>17.6 MB</td>
+</tr>
+<tr>
+<td>599</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[599]%20Minimum%20Index%20Sum%20of%20Two%20Lists.md">Minimum Index Sum of Two Lists</a></td>
+<td>Easy</td>
+<td>112 ms</td>
+<td>12.2 MB</td>
+</tr>
+<tr>
+<td>605</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[605]%20Can%20Place%20Flowers.md">Can Place Flowers</a></td>
+<td>Easy</td>
+<td>328 ms</td>
+<td>12.4 MB</td>
+</tr>
+<tr>
+<td>617</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[617]%20Merge%20Two%20Binary%20Trees.md">Merge Two Binary Trees</a></td>
+<td>Easy</td>
+<td>6 ms</td>
+<td>30.8 MB</td>
+</tr>
+<tr>
+<td>633</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[633]%20Sum%20of%20Square%20Numbers.md">Sum of Square Numbers</a></td>
+<td>Medium</td>
+<td>124 ms</td>
+<td>13.2 MB</td>
+</tr>
+<tr>
+<td>648</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[648]%20Replace%20Words.md">Replace Words</a></td>
+<td>Medium</td>
+<td>288 ms</td>
+<td>21.2 MB</td>
+</tr>
+<tr>
+<td>664</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[664]%20Strange%20Printer.md">Strange Printer</a></td>
+<td>Hard</td>
+<td>656 ms</td>
+<td>14.3 MB</td>
+</tr>
+<tr>
+<td>665</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[665]%20Non-decreasing%20Array.md">Non-decreasing Array</a></td>
+<td>Easy</td>
+<td>396 ms</td>
+<td>12.4 MB</td>
+</tr>
+<tr>
+<td>670</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[670]%20Maximum%20Swap.md">Maximum Swap</a></td>
+<td>Medium</td>
+<td>16 ms</td>
+<td>11.7 MB</td>
+</tr>
+<tr>
+<td>680</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[680]%20Valid%20Palindrome%20II.md">Valid Palindrome II</a></td>
+<td>Easy</td>
+<td>188 ms</td>
+<td>13.4 MB</td>
+</tr>
+<tr>
+<td>687</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[687]%20Longest%20Univalue%20Path.md">Longest Univalue Path</a></td>
+<td>Medium</td>
+<td>412 ms</td>
+<td>18.8 MB</td>
+</tr>
+<tr>
+<td>695</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[695]%20Max%20Area%20of%20Island.md">Max Area of Island</a></td>
+<td>Medium</td>
+<td>116 ms</td>
+<td>14.1 MB</td>
+</tr>
+<tr>
+<td>712</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[712]%20Minimum%20ASCII%20Delete%20Sum%20for%20Two%20Strings.md">Minimum ASCII Delete Sum for Two Strings</a></td>
+<td>Medium</td>
+<td>1108 ms</td>
+<td>18.4 MB</td>
+</tr>
+<tr>
+<td>714</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[714]%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee.md">Best Time to Buy and Sell Stock with Transaction Fee</a></td>
+<td>Medium</td>
+<td>776 ms</td>
+<td>17.6 MB</td>
+</tr>
+<tr>
+<td>718</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[718]%20Maximum%20Length%20of%20Repeated%20Subarray.md">Maximum Length of Repeated Subarray</a></td>
+<td>Medium</td>
+<td>3496 ms</td>
+<td>39.9 MB</td>
+</tr>
+<tr>
+<td>724</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[724]%20Find%20Pivot%20Index.md">Find Pivot Index</a></td>
+<td>Easy</td>
+<td>124 ms</td>
+<td>12.5 MB</td>
+</tr>
+<tr>
+<td>739</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[739]%20Daily%20Temperatures.md">Daily Temperatures</a></td>
+<td>Medium</td>
+<td>436 ms</td>
+<td>15.1 MB</td>
+</tr>
+<tr>
+<td>745</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[745]%20Find%20Smallest%20Letter%20Greater%20Than%20Target.md">Find Smallest Letter Greater Than Target</a></td>
+<td>Easy</td>
+<td>220 ms</td>
+<td>13.5 MB</td>
+</tr>
+<tr>
+<td>747</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[747]%20Min%20Cost%20Climbing%20Stairs.md">Min Cost Climbing Stairs</a></td>
+<td>Easy</td>
+<td>88 ms</td>
+<td>13.9 MB</td>
+</tr>
+<tr>
+<td>753</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[753]%20Open%20the%20Lock.md">Open the Lock</a></td>
+<td>Medium</td>
+<td>2928 ms</td>
+<td>14.9 MB</td>
+</tr>
+<tr>
+<td>768</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[768]%20Partition%20Labels.md">Partition Labels</a></td>
+<td>Medium</td>
+<td>40 ms</td>
+<td>12 MB</td>
+</tr>
+<tr>
+<td>777</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[777]%20Toeplitz%20Matrix.md">Toeplitz Matrix</a></td>
+<td>Easy</td>
+<td>104 ms</td>
+<td>13.7 MB</td>
+</tr>
+<tr>
+<td>782</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[782]%20Jewels%20and%20Stones.md">Jewels and Stones</a></td>
+<td>Easy</td>
+<td>36 ms</td>
+<td>6.5 MB</td>
+</tr>
+<tr>
+<td>792</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[792]%20Binary%20Search.md">Binary Search</a></td>
+<td>Easy</td>
+<td>332 ms</td>
+<td>15.1 MB</td>
+</tr>
+<tr>
+<td>800</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[800]%20Letter%20Case%20Permutation.md">Letter Case Permutation</a></td>
+<td>Medium</td>
+<td>52 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>811</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[811]%20Number%20of%20Subarrays%20with%20Bounded%20Maximum.md">Number of Subarrays with Bounded Maximum</a></td>
+<td>Medium</td>
+<td>404 ms</td>
+<td>15.2 MB</td>
+</tr>
+<tr>
+<td>813</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[813]%20All%20Paths%20From%20Source%20to%20Target.md">All Paths From Source to Target</a></td>
+<td>Medium</td>
+<td>84 ms</td>
+<td>13 MB</td>
+</tr>
+<tr>
+<td>853</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[853]%20Most%20Profit%20Assigning%20Work.md">Most Profit Assigning Work</a></td>
+<td>Medium</td>
+<td>340 ms</td>
+<td>14.7 MB</td>
+</tr>
+<tr>
+<td>872</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[872]%20Split%20Array%20into%20Fibonacci%20Sequence.md">Split Array into Fibonacci Sequence</a></td>
+<td>Medium</td>
+<td>32 ms</td>
+<td>14.1 MB</td>
+</tr>
+<tr>
+<td>878</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[878]%20Shifting%20Letters.md">Shifting Letters</a></td>
+<td>Medium</td>
+<td>168 ms</td>
+<td>14.5 MB</td>
+</tr>
+<tr>
+<td>891</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[891]%20Score%20After%20Flipping%20Matrix.md">Score After Flipping Matrix</a></td>
+<td>Medium</td>
+<td>48 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>923</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[923]%20Super%20Egg%20Drop.md">Super Egg Drop</a></td>
+<td>Hard</td>
+<td>2436 ms</td>
+<td>33.4 MB</td>
+</tr>
+<tr>
+<td>928</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[928]%20Surface%20Area%20of%203D%20Shapes.md">Surface Area of 3D Shapes</a></td>
+<td>Easy</td>
+<td>64 ms</td>
+<td>11.9 MB</td>
+</tr>
+<tr>
+<td>951</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[951]%20Partition%20Array%20into%20Disjoint%20Intervals.md">Partition Array into Disjoint Intervals</a></td>
+<td>Medium</td>
+<td>172 ms</td>
+<td>15.3 MB</td>
+</tr>
+<tr>
+<td>967</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[967]%20Minimum%20Falling%20Path%20Sum.md">Minimum Falling Path Sum</a></td>
+<td>Medium</td>
+<td>108 ms</td>
+<td>14.6 MB</td>
+</tr>
+<tr>
+<td>971</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[971]%20Shortest%20Bridge.md">Shortest Bridge</a></td>
+<td>Medium</td>
+<td>428 ms</td>
+<td>17.1 MB</td>
+</tr>
+<tr>
+<td>1013</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1013]%20Fibonacci%20Number.md">Fibonacci Number</a></td>
+<td>Easy</td>
+<td>28 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>1081</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1081]%20Video%20Stitching.md">Video Stitching</a></td>
+<td>Medium</td>
+<td>76 ms</td>
+<td>14 MB</td>
+</tr>
+<tr>
+<td>1111</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1111]%20Minimum%20Score%20Triangulation%20of%20Polygon.md">Minimum Score Triangulation of Polygon</a></td>
+<td>Medium</td>
+<td>164 ms</td>
+<td>14.5 MB</td>
+</tr>
+<tr>
+<td>1236</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1236]%20N-th%20Tribonacci%20Number.md">N-th Tribonacci Number</a></td>
+<td>Easy</td>
+<td>28 ms</td>
+<td>14.2 MB</td>
+</tr>
+<tr>
+<td>1250</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1250]%20Longest%20Common%20Subsequence.md">Longest Common Subsequence</a></td>
+<td>Medium</td>
+<td>432 ms</td>
+<td>22.5 MB</td>
+</tr>
+<tr>
+<td>1290</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1290]%20Make%20Array%20Strictly%20Increasing.md">Make Array Strictly Increasing</a></td>
+<td>Hard</td>
+<td>756 ms</td>
+<td>14.5 MB</td>
+</tr>
+<tr>
+<td>1322</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1322]%20Minimum%20Moves%20to%20Reach%20Target%20with%20Rotations.md">Minimum Moves to Reach Target with Rotations</a></td>
+<td>Hard</td>
+<td>9 ms</td>
+<td>39.2 MB</td>
+</tr>
+<tr>
+<td>1330</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Panda-0129/leetcode/blob/master/Markdown/[1330]%20Longest%20Arithmetic%20Subsequence%20of%20Given%20Difference.md">Longest Arithmetic Subsequence of Given Difference</a></td>
+<td>Medium</td>
+<td>520 ms</td>
+<td>27.5 MB</td>
+</tr>
+</tbody></table>
+</div><div class="article-licensing box"><div class="licensing-title"><p>LeetCode 刷题</p><p><a href="https://panda-0129.github.io/de20ad77/">https://panda-0129.github.io/de20ad77/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>金波</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-01-15</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-01-15</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/LeetCode/">LeetCode</a></div><!--!--></article></div><!--!--><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://cdn.jsdelivr.net/gh/Panda-0129/blogImage/5ca27779e017a6ec643c8bc941fb284.jpg" alt="bobo"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">bobo</p><p class="is-size-6 is-block">Stay hungry, Stay Foolish.</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国·北京</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">1</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">1</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Panda-0129" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Panda-0129"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Weibo" href="https://weibo.com/yuanzaizhichixy/"><i class="fab fa-weibo"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/yuanzaizhich_xy"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="/boj01291127@gmail.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=feedforall/bobo-Blog-0129&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="feedforall/bobo-Blog-0129" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div><p class="help">邮件订阅，更新早获取</p></form></div></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">日常学习</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-01-15T07:59:30.000Z">2021-01-15</time></p><p class="title"><a href="/de20ad77/">LeetCode 刷题</a></p><p class="categories"><a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">一月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/panda.svg" alt="bobo&#039;s blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 金波</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Panda-0129"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><form class="searchbox-input-container"><input class="searchbox-input" name="wd" type="text" placeholder="想要查找什么..."></form><a class="searchbox-close" href="javascript:;">×</a></div></div></div><script>(function ($) {
+            $('.searchbox-input-container').on('submit', function (e) {
+                var keyword = $('.searchbox-input[name="wd"]').val();
+                window.location = 'https://www.baidu.com/s?wd=site:panda-0129.github.io ' + keyword;
+                return false;
+            });
+        })(jQuery);
+        (function (document, $) {
+            $(document).on('click', '.navbar-main .search', function () {
+                $('.searchbox').toggleClass('show');
+            }).on('click', '.searchbox .searchbox-mask', function () {
+                $('.searchbox').removeClass('show');
+            }).on('click', '.searchbox-close', function () {
+                $('.searchbox').removeClass('show');
+            });
+        })(document, jQuery);</script></body></html>
